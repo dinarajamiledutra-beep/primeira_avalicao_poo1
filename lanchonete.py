@@ -30,7 +30,6 @@ def calcular_subtotal(quantidade,preco_unitario):
     
 def calcular_desconto(subtotal, cupom):
     """Retorna o valor monetário do desconto.
-
     A taxa básica depende da faixa do subtotal; o cupom "sim" soma
     5 pontos percentuais à taxa (sem descontos em sequência).
     """
@@ -40,10 +39,8 @@ def calcular_desconto(subtotal, cupom):
         taxa = 5
     else:
         taxa = 10
-
     if cupom == "sim":
         taxa += 5
-
     return subtotal * taxa / 100
     
 def classificar_pedido(subtotal):
@@ -61,7 +58,6 @@ def exibir_resumo(nome, itens_validos, itens_rejeitados, linhas_validas,
                   total_unidades, subtotal, desconto, total, classificacao):
     """Imprime o relatório completo do pedido (não retorna valor)."""
     print("Cliente:", nome)
-
     if linhas_validas == 0:
         print("Pedido sem itens válidos")
     else:
@@ -69,7 +65,6 @@ def exibir_resumo(nome, itens_validos, itens_rejeitados, linhas_validas,
         for item in itens_validos:
             print(item["produto"], "| qtd:", item["quantidade"],
                   "| preço:", item["preco"], "| subtotal:", item["subtotal"])
-
     if len(itens_rejeitados) > 0:
         print("Itens rejeitados:")
         for rejeitado in itens_rejeitados:
@@ -95,7 +90,6 @@ def processar_pedido(nome, pedido, cardapio, cupom):
     for linha in pedido:
         produto = linha["produto"].lower()
         quantidade = linha["quantidade"]
-
         if validar_item(produto, quantidade, cardapio):
             preco = cardapio[produto]
             subtotal_item = calcular_subtotal(quantidade, preco)
